@@ -8,6 +8,7 @@ import { TodoInterface, createTodo, initialTodos } from 'src/app/model/model';
 })
 export class MainPageComponent implements OnInit {
   todos: TodoInterface[] = [];
+  value = '';
 
   get hasCompletedTodos(): boolean {
     return this.todos.some((todo) => todo.completed);
@@ -19,10 +20,10 @@ export class MainPageComponent implements OnInit {
     this.todos = initialTodos;
   }
 
-  // addTodo(description: string): void {
-  //   const newTodo = createTodo(description);
-  //   this.todos = [...this.todos, newTodo];
-  // }
+  addTodo(description: string): void {
+    const newTodo = createTodo(description);
+    this.todos = [...this.todos, newTodo];
+  }
 
   removeTodo(todoToRemove: TodoInterface): void {
     this.todos = this.todos.filter((todo) => todo.id !== todoToRemove.id);
@@ -42,5 +43,9 @@ export class MainPageComponent implements OnInit {
 
   clearCompleted(): void {
     this.todos = this.todos.filter((todo) => todo.completed === false);
+  }
+
+  trackByTodos(_: number, todos: TodoInterface): TodoInterface {
+    return todos;
   }
 }

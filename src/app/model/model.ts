@@ -27,4 +27,10 @@ export const initialTodos: TodoInterface[] = [
   },
 ];
 
-export function createTodo(description: string) {}
+export function createTodo(description: string) {
+  return {
+    id: Math.random() * (100 - 4) + 4,
+    description: description,
+    completed: false,
+  };
+}

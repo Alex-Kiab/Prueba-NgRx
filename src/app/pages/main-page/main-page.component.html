@@ -1,1 +1,42 @@
-<p>main-page works!</p>
+<div class="content">
+  <mat-card class="card">
+    <mat-card-header class="card__header">
+      <h1>Lista de tareas</h1>
+    </mat-card-header>
+    <mat-card-content class="card__body">
+      <div
+        *ngFor="let todosEntry of todos; trackBy: trackByTodos"
+        class="card__body__row"
+      >
+        <mat-form-field class="example-form-field">
+          <mat-label>Nueva tarea</mat-label>
+          <input matInput type="text" [(ngModel)]="value" />
+          <button
+            matSuffix
+            mat-icon-button
+            (click)="addTodo(todosEntry.description)"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-form-field>
+        <div>
+          <mat-checkbox
+            [checked]="todosEntry.completed"
+            (change)="
+              todosEntry.completed
+                ? markAsPending(todosEntry)
+                : markAsCompleted(todosEntry)
+            "
+          >
+            <div>{{ todosEntry.description }}</div>
+            <button mat-icon-button (click)="removeTodo(todosEntry)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-checkbox>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+{{ todos | json }}
