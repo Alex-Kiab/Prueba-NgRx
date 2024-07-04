@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageModule } from './pages/main-page/main-page.module';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
+import { todosReducer } from './pages/state';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +15,6 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MainPageModule,
-    StoreModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent],
