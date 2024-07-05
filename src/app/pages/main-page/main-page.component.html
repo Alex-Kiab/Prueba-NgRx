@@ -1,25 +1,16 @@
 <div class="content">
   <mat-card class="card">
-    <mat-card-header class="card__header">
-      <h1>Lista de tareas</h1>
-    </mat-card-header>
+    <h1 class="card__header">Lista de tareas</h1>
     <mat-card-content class="card__body">
-      <div
-        *ngFor="let todosEntry of todos; trackBy: trackByTodos"
-        class="card__body__row"
-      >
-        <mat-form-field class="example-form-field">
-          <mat-label>Nueva tarea</mat-label>
-          <input matInput type="text" [(ngModel)]="value" />
-          <button
-            matSuffix
-            mat-icon-button
-            (click)="addTodo(todosEntry.description)"
-          >
-            <mat-icon>add</mat-icon>
-          </button>
-        </mat-form-field>
-        <div>
+      <mat-form-field>
+        <mat-label>Nueva tarea</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button matSuffix mat-icon-button (click)="addTodo(value)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-form-field>
+      <div *ngFor="let todosEntry of todos; trackBy: trackByTodos">
+        <div class="card__body__row">
           <mat-checkbox
             [checked]="todosEntry.completed"
             (change)="
@@ -27,16 +18,15 @@
                 ? markAsPending(todosEntry)
                 : markAsCompleted(todosEntry)
             "
-          >
-            <div>{{ todosEntry.description }}</div>
-            <button mat-icon-button (click)="removeTodo(todosEntry)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </mat-checkbox>
+          ></mat-checkbox>
+          <div>{{ todosEntry.description }}</div>
+          <button mat-icon-button (click)="removeTodo(todosEntry)">
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </div>
       <div>
-        <button mat-button (click)="clearCompleted()">
+        <button mat-stroked-button (click)="clearCompleted()">
           Eliminar tareas completadas
         </button>
       </div>

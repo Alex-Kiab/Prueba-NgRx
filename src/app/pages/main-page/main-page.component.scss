@@ -8,19 +8,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    &__header{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        &__h1{
-            padding: 0px;
-        }
-    }
     &__body{
         &__row{
             display: flex;
-            flex-direction: row;
             align-items: center;
+            padding-bottom: 12px;
+            justify-content: space-around;
         }
     }
 }
