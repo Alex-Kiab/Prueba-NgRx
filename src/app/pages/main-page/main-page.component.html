@@ -9,7 +9,7 @@
           <mat-icon>add</mat-icon>
         </button>
       </mat-form-field>
-      <div *ngFor="let todosEntry of todos; trackBy: trackByTodos">
+      <div *ngFor="let todosEntry of todos$ | async; trackBy: trackByTodos">
         <div class="card__body__row">
           <mat-checkbox
             [checked]="todosEntry.completed"
@@ -34,4 +34,4 @@
   </mat-card>
 </div>
 
-{{ todos | json }}
+{{ todos$ | async | json }}

@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { StoreModule } from '@ngrx/store';
-import { todosReducer } from '../state';
+import { todosReducer, todosStateFeatureKey } from '../state';
 
 @NgModule({
   declarations: [MainPageComponent],
@@ -23,7 +23,7 @@ import { todosReducer } from '../state';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
-    StoreModule.forFeature('todosState', todosReducer),
+    StoreModule.forFeature(todosStateFeatureKey, todosReducer),
   ],
   exports: [MainPageComponent],
 })
