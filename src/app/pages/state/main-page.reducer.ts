@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { TodoInterface, initialTodos } from '../../model/model';
 import { TodosPageActions } from '.';
+import { TodoInterface, initialTodos } from '../../model/model';
 
 export interface TodosState {
   todos: TodoInterface[];
